@@ -1,0 +1,31 @@
+%table
+	%tr
+		%td
+			=link_to "0-9","#", :class => "movie_link"
+			- ('A' .. 'z').each do |alp|
+				=link_to alp,"#", :class => "movie_link"
+	%tr
+		%td
+			- if @movies != nil && @movies.size > 0
+				%table{:border => '1'}
+					%tr
+						%th Title
+						%th Year
+						%th Genre
+						%th Rating
+						%th length
+						%th{:colspan => '2'} Record
+						- @movies.each do |m|
+							%tr
+								%td
+									=link_to "#{m.title}", '#', :name => "#{m.imdb_id}", :class => 'viewmovie'
+								%td=m.year
+								%td=m.genres.join(", ")
+								%td=m.rating
+								%td=m.length
+								%td
+									=link_to "Edit", '#'
+								%td
+									=link_to "Delete", '#'
+			-else
+				="No movies found."		

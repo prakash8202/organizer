@@ -1,0 +1,10 @@
+-if @movielist != nil && @movielist.size > 0
+  %table
+    -@movielist.each_with_index do |m, index|
+      %tr
+        %td
+          - @i = index + 1
+          = "#{@i} . "
+          =link_to "#{m.title}", '#', :name => "#{m.id}", :id => "selectmovie"
+-else
+  ="No movies found."

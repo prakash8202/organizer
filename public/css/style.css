@@ -1,0 +1,12 @@
+#leftframe{
+  float: left;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 49%;
+}
+#rightframe{
+  float: right;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  width: 49%;
+}

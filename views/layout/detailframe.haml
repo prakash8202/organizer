@@ -1,0 +1,65 @@
+- if @movie != nil
+	%table{:width => '100%'}
+		%tr
+			%td{:align => 'left'}
+				%table
+					%tr
+						%td 
+							%b Title 
+						%td=@movie.title
+					%tr
+						%td 
+							%b Year 
+						%td=@movie.year
+					%tr
+						%td
+							%b Genre
+						%td=@movie.genres.join(", ")
+					%tr
+						%td
+							%b Director
+						%td=@movie.director.join(", ")
+					%tr
+						%td
+							%b Languages
+						%td=@movie.languages.join(", ")
+					%tr
+						%td 
+							%b Length 
+						%td="#{@movie.length} mins"
+					%tr
+						%td 
+							%b Rating 
+						%td=@movie.rating
+					%tr
+						%td 
+							%b Tagline
+						%td=@movie.tagline
+			%td{:align => 'right'}
+				%table
+					%tr
+						%td
+							%img{:src => "/images/#{@movie.imdb_id}.jpg", :height => '300px', :width => '200px', :onerror => 'this.src="/images/default.jpg"'}
+					%tr
+						%td
+							=link_to "Update Movie Details", '#', :name => "#{@movie.imdb_id}", :class => 'updatedetail'
+		%tr
+			%td{:colspan => '2'}
+				%table
+					%tr
+						%td{:colspan => '2'}
+							%b Cast
+					-@movie.cast_members.each do |c|
+						%tr
+							%td{:colspan => '2'}
+								=c
+					%tr
+						%td
+							%b Plot
+						%td
+							=@movie.plot
+					%tr
+						%td
+							%b Imdb URL
+						%td
+							=link_to "#{@movie.url}", "#{@movie.url}", :target => '_blank'

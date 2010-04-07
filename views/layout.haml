@@ -1,0 +1,21 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "lang" => "en", :lang => "en" }
+  %head
+    %meta{'http-equiv' => "content-type", :content => "text/html;charset=UTF-8"}
+    %title= 'Organizer'
+    %link{:rel => 'stylesheet', :href => '/css/style.css'}
+    %script{:src => 'http://www.google.com/jsapi?key=ABQIAAAALmZDjxyNQlaE5UVTGJafwRQCcWaO39evJ0teyJMrbtE3qG-kFhRObuJ_p8sXcnU_GVatSR4H4PU0lg', :type => 'text/javascript' }
+    :javascript
+      google.load('jquery', '1.4.2');
+      google.load('jqueryui', '1.7.2');
+    %script{:type => 'text/javascript', :src => '/javascripts/moviedb.js'}
+    =yield_content :styles_and_scripts
+  %body
+    #header
+      = haml :"layout/header", :layout => false
+    #menu
+      = haml :"layout/_menu", :layout => false
+    #container
+      = haml :"movielist/mainlist", :layout => false
+    #mask
+      = haml :"layout/footer", :layout => false
