@@ -23,13 +23,13 @@ end
 
 post '/movie/new' do
   movie_imdb_id = params[:movie][:imdb_id]
+  year = params[:year]
   @avail_movie = Movie.first(:imdb_id => movie_imdb_id.to_s)
   if @avail_movie == nil
     m = Imdb::Movie.new(movie_imdb_id)
-    @movie = Movie.new(:imdb_id => m.id, :title => m.title, :url => m.url, :cast_members => m.cast_members, :director => m.director, :genres => m.genres, :languages => m.languages, :length => m.length, :rating => m.rating, :plot => m.plot, :tagline => m.tagline, :year => m.year)
+    @movie = Movie.new(:imdb_id => m.id, :title => m.title, :url => m.url, :cast_members => m.cast_members, :director => m.director, :genres => m.genres, :languages => m.languages, :length => m.length, :rating => m.rating, :plot => m.plot, :tagline => m.tagline, :year => year)
     @movie.save!
-    pp m.year 
-    pp m.poster 
+    
     dir_name = "public/images"
 	d = Dir.mkdir(dir_name) unless File.directory?(dir_name)
     file_name = "#{m.id}.jpg"
@@ -54,3 +54,15 @@ post '/movie/view' do
   haml :"/layout/detailframe", :layout => false
 end
 
+post '/movie/updateposter' do
+  movieid = params[:movieid]
+  new_file = params[:poster]
+
+  dir_name = "public/images"
+  file_name = "#{movieid}x.jpg"
+  file_path = File.join dir_name, file_name
+  poster = File.new(file_path, 'w')
+  poster.write new_file  
+
+  haml :"/layout/detailframe", :layout => false
+end

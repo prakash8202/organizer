@@ -5,6 +5,9 @@
         %td
           - @i = index + 1
           = "#{@i} . "
-          =link_to "#{m.title}", '#', :name => "#{m.id}", :id => "selectmovie"
+          - md = /\((\d*)\)/.match(m.title)
+          - if(md)
+            - year=md.captures[0]
+          =link_to "#{m.title}", '#', :name => "#{m.id},#{year}", :class => "selectmovie"
 -else
   ="No movies found."

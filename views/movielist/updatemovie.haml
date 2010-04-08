@@ -1,0 +1,10 @@
+- form_for @movie, "/update_movie/#{@movie.imdb_id}", :id => 'movie_update_form' do |f|
+  =f.error_messages
+  %table
+    %tr
+      %td=f.label :upload_image
+      %td=f.text_field :allergy_name, :name => 'allergy[allergy_name]', :readonly => 'readonly'
+    %tr
+      %td
+        %input{:type => 'reset', :value => 'Reset'}
+      %td=f.submit 'Save', :class => 'save_allergy'

@@ -42,7 +42,8 @@
 							%img{:src => "/images/#{@movie.imdb_id}.jpg", :height => '300px', :width => '200px', :onerror => 'this.src="/images/default.jpg"'}
 					%tr
 						%td
-							=link_to "Update Movie Details", '#', :name => "#{@movie.imdb_id}", :class => 'updatedetail'
+							=link_to "Update Poster", '#', :name => "#{@movie.imdb_id}", :id => 'updateposter'
+							.preview
 		%tr
 			%td{:colspan => '2'}
 				%table
