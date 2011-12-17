@@ -1,5 +1,5 @@
-$(document).ready(function() {   
- 
+$(document).ready(function() {
+
   //if add button is clicked
   $('.addmovie').click(function() { add_movie(); return false;});
   onMainPageRefresh();
@@ -24,10 +24,10 @@ function onSearchClick(){
         //if movie title is clicked
         onSelectMovieClick();
       });
- 
+
       return false;
     });
-} 
+}
 
 function onSelectMovieClick(){
   $('.selectmovie').click(function() {
@@ -38,10 +38,10 @@ function onSelectMovieClick(){
       window.alert(data);
       onSearchClick();
     });
-    
+
     return false;
   });
-}		
+}
 
 function show_mainlist(){
   $.get("/movie/mainlist", function(data){
@@ -78,25 +78,25 @@ function onUpdatePosterClick(){
 		onSubmit : function(file , ext){
 			//if (ext && new RegExp('^(' + allowed.join('|') + ')$').test(ext)){
 			if (ext && /^(jpg|png|jpeg|gif)$/.test(ext)){
-				
+
 				/* Setting data */
 				this.setData({
 					'movieid': document.getElementById('updateposter').name
 				});
-				$('div.preview').html("loading...");				
+				$('div.preview').html("loading...");
 			} else {
-				
+
 				// extension is not allowed
 				$('div.preview').html('Error: only images are allowed');
 				// cancel upload
-				return false;				
+				return false;
 			}
-	
+
 		},
 		onComplete : function(file, response){
 			window.alert(file);
 			$('div.preview').html('');
-			$("#rightframe").html(response);		
-		}		
-	});	
+			$("#rightframe").html(response);
+		}
+	});
 }
