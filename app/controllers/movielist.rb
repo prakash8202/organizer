@@ -29,7 +29,7 @@ post '/movie/new' do
     m = Imdb::Movie.new(movie_imdb_id)
     @movie = Movie.new(:imdb_id => m.id, :title => m.title, :url => m.url, :cast_members => m.cast_members, :director => m.director, :genres => m.genres, :languages => m.languages, :length => m.length, :rating => m.rating, :plot => m.plot, :tagline => m.tagline, :year => year)
     @movie.save!
-    
+
     dir_name = "public/images"
 	d = Dir.mkdir(dir_name) unless File.directory?(dir_name)
     file_name = "#{m.id}.jpg"
@@ -62,7 +62,7 @@ post '/movie/updateposter' do
   file_name = "#{movieid}x.jpg"
   file_path = File.join dir_name, file_name
   poster = File.new(file_path, 'w')
-  poster.write new_file  
+  poster.write new_file
 
   haml :"/layout/detailframe", :layout => false
 end

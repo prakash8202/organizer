@@ -4,12 +4,12 @@
 			%td{:align => 'left'}
 				%table
 					%tr
-						%td 
-							%b Title 
+						%td
+							%b Title
 						%td=@movie.title
 					%tr
-						%td 
-							%b Year 
+						%td
+							%b Year
 						%td=@movie.year
 					%tr
 						%td
@@ -24,15 +24,15 @@
 							%b Languages
 						%td=@movie.languages.join(", ")
 					%tr
-						%td 
-							%b Length 
+						%td
+							%b Length
 						%td="#{@movie.length} mins"
 					%tr
-						%td 
-							%b Rating 
+						%td
+							%b Rating
 						%td=@movie.rating
 					%tr
-						%td 
+						%td
 							%b Tagline
 						%td=@movie.tagline
 			%td{:align => 'right'}
